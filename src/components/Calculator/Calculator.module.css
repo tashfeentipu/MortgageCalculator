@@ -1,0 +1,11 @@
+.Calculator {
+  margin: 30px 50px;
+}
+
+.Calculator h1 {
+  font-weight: normal;
+}
+
+.Main {
+  display: flex;
+}

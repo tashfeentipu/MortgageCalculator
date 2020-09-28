@@ -1,0 +1,23 @@
+.Circle {
+  margin: 20px 10px;
+  width: 500px;
+  height: 500px;
+}
+
+.Label {
+  transform: translateY(0.25em);
+}
+
+.Percentage {
+  font-size: 0.6em;
+  line-height: 1;
+  text-anchor: middle;
+  transform: translateY(-0.25em);
+}
+
+.Ctext {
+  font-size: 0.2em;
+  text-transform: uppercase;
+  text-anchor: middle;
+  transform: translateY(0.7em);
+}
