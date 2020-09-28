@@ -43,11 +43,12 @@ class Calculator extends Component {
     priceViewer: {
       price: 1348500,
       data: [
-        { title: "Common Charges", Value: 2726, color: "purple" },
-        { title: "Mortgage", Value: 22475, color: "purple" },
-        { title: "Taxes", Value: 2122, color: "purple" },
+        { title: "Common Charges", Value: 2726, color: "#1e3376" },
+        { title: "Mortgage", Value: 22475, color: "#7170ac" },
+        { title: "Taxes", Value: 2122, color: "#cfcfe3" },
       ],
     },
+    circlePrice: 27323,
   };
 
   // function for handling the change in value of slider
@@ -69,9 +70,15 @@ class Calculator extends Component {
       )
     );
 
+    const plCirclePrice =
+      plPriceViewer.data[0].Value +
+      plPriceViewer.data[1].Value +
+      plPriceViewer.data[2].Value;
+
     this.setState({
       mortgageCalculator: plMortgageCalculator,
       priceViewer: plPriceViewer,
+      circlePrice: plCirclePrice,
     });
   };
 
@@ -88,7 +95,10 @@ class Calculator extends Component {
             data={this.state.priceViewer.data}
             price={this.state.priceViewer.price}
           ></PriceViewer>
-          <Circle></Circle>
+          <Circle
+            price={this.state.circlePrice}
+            data={this.state.priceViewer.data}
+          ></Circle>
           <MortgageCalculator
             data={this.state.mortgageCalculator}
             onChange={this.sliderValueHandler}

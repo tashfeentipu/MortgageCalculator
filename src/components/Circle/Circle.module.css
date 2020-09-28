@@ -1,7 +1,7 @@
 .Circle {
   margin: 20px 10px;
-  width: 500px;
-  height: 500px;
+  width: 600px;
+  height: 600px;
 }
 
 .Label {
@@ -9,15 +9,24 @@
 }
 
 .Percentage {
-  font-size: 0.6em;
+  font-size: 0.4em;
   line-height: 1;
   text-anchor: middle;
-  transform: translateY(-0.25em);
+  transform: translateY(-0.6em);
 }
 
 .Ctext {
-  font-size: 0.2em;
+  font-size: 0.15em;
   text-transform: uppercase;
   text-anchor: middle;
   transform: translateY(0.7em);
+}
+
+.Rotation {
+  transform: rotate(-90deg);
+  transform-origin: center;
+}
+
+.Rotation circle {
+  transition: stroke-dasharray 0.8s ease-out;
 }
