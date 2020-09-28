@@ -5,7 +5,12 @@ import Labels from "../Labels/Labels";
 
 const PriceViewer = (props) => {
   const labels = props.data.map((element) => (
-    <Labels title={element.title} value={element.Value} color={element.color} />
+    <Labels
+      key={element.title}
+      title={element.title}
+      value={element.Value}
+      color={element.color}
+    />
   ));
 
   return (

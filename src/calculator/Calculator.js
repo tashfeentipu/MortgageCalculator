@@ -1,9 +1,11 @@
 import React, { Component } from "react";
 import classes from "./Calculator.module.css";
 
-import PriceViewer from "../PriceViewer/PriceViewer";
-import Circle from "../Circle/Circle";
-import MortgageCalculator from "../MortgageCalculator/MortgageCalculator";
+import PriceViewer from "./PriceViewer/PriceViewer";
+import Circle from "./Circle/Circle";
+import MortgageCalculator from "./MortgageCalculator/MortgageCalculator";
+
+import { Colors, LabelsValue, SliderValues, circlePrice } from "./Config";
 
 class Calculator extends Component {
   // This is the main component, all the states are managed here
@@ -11,44 +13,52 @@ class Calculator extends Component {
     mortgageCalculator: [
       {
         Label: "Interest Rate",
-        Value: 0,
+        Value: SliderValues.InterestRate.minValue,
         appendAfter: "%",
-        minValue: 0.0,
-        maxValue: 10.0,
+        minValue: SliderValues.InterestRate.minValue,
+        maxValue: SliderValues.InterestRate.maxValue,
         step: 0.01,
       },
       {
         Label: "Sale Price",
-        Value: 1348500,
+        Value: SliderValues.SalePrice.minValue,
         appendBefore: "$",
-        minValue: 1348500,
-        maxValue: 6742500,
+        minValue: SliderValues.SalePrice.minValue,
+        maxValue: SliderValues.SalePrice.maxValue,
       },
       {
         Label: "Down Payment",
-        Value: 0,
+        Value: SliderValues.DownPayment.minValue,
         appendAfter: "%",
-        minValue: 0,
-        maxValue: 100,
+        minValue: SliderValues.DownPayment.minValue,
+        maxValue: SliderValues.DownPayment.maxValue,
         step: 1,
       },
       {
         Label: "Term",
-        Value: 5,
+        Value: SliderValues.Term.minValue,
         appendAfter: "Years",
-        minValue: 5,
-        maxValue: 30,
+        minValue: SliderValues.Term.minValue,
+        maxValue: SliderValues.Term.maxValue,
       },
     ],
     priceViewer: {
-      price: 1348500,
+      price: SliderValues.SalePrice.minValue,
       data: [
-        { title: "Common Charges", Value: 2726, color: "#1e3376" },
-        { title: "Mortgage", Value: 22475, color: "#7170ac" },
-        { title: "Taxes", Value: 2122, color: "#cfcfe3" },
+        {
+          title: "Common Charges",
+          Value: LabelsValue.CommonCharges,
+          color: Colors.CommonCircle,
+        },
+        {
+          title: "Mortgage",
+          Value: LabelsValue.Mortgage,
+          color: Colors.MortgageCircle,
+        },
+        { title: "Taxes", Value: LabelsValue.Taxes, color: Colors.TaxesCircle },
       ],
     },
-    circlePrice: 27323,
+    circlePrice: circlePrice,
   };
 
   // function for handling the change in value of slider
@@ -64,6 +74,7 @@ class Calculator extends Component {
     plPriceViewer.price = plMortgageCalculator[1].Value;
     plPriceViewer.data[1].Value = Math.round(
       this.mortgageFunction(
+        plMortgageCalculator[0].Value,
         parseInt(plMortgageCalculator[1].Value, 10),
         parseInt(plMortgageCalculator[2].Value, 10),
         parseInt(plMortgageCalculator[3].Value, 10)
@@ -82,8 +93,16 @@ class Calculator extends Component {
     });
   };
 
-  mortgageFunction = (value, downPayment, term) => {
-    return (value - (downPayment * value) / 100) / (term * 12);
+  mortgageFunction = (interest, value, downPayment, term) => {
+    if (interest === 0.0) {
+      return (value - (downPayment * value) / 100) / (term * 12);
+    }
+    const remainingValue = value - (downPayment * value) / 100;
+    const monthlyInterest = interest / 12 / 100;
+    const monthTerm = term * 12;
+    const power = Math.pow(1 + monthlyInterest, monthTerm);
+
+    return (remainingValue * monthlyInterest * power) / (power - 1);
   };
 
   render() {

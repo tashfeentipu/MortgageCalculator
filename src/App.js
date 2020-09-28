@@ -1,7 +1,7 @@
 import React from "react";
 
 // import Circle from "./Circle";
-import Calculator from "./components/Calculator/Calculator";
+import Calculator from "./calculator/Calculator";
 
 function App() {
   return (

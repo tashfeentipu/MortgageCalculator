@@ -1,5 +1,6 @@
 import React from "react";
 import classes from "./Circle.module.css";
+import { Colors } from "../Config";
 
 const circleConfig = {
   viewBox: "0 0 50 50",
@@ -63,7 +64,7 @@ const Circle = (props) => {
               cy={circleConfig.y}
               r={circleConfig.radio}
               fill="transparent"
-              stroke="teal"
+              stroke={Colors.MortgageCircle}
               strokeWidth="2"
               strokeDasharray={`${filledAreaOuter} ${emptyAreaOuter}`}
             />
@@ -74,7 +75,7 @@ const Circle = (props) => {
               cy={circleConfig.y}
               r={circleConfig.radio - 3}
               fill="transparent"
-              stroke="teal"
+              stroke={Colors.CommonCircle}
               strokeWidth="2"
               strokeDasharray={`${filledAreaMiddle} ${emptyAreaMiddle}`}
             />
@@ -85,7 +86,7 @@ const Circle = (props) => {
               cy={circleConfig.y}
               r={circleConfig.radio - 6}
               fill="transparent"
-              stroke="teal"
+              stroke={Colors.TaxesCircle}
               strokeWidth="2"
               strokeDasharray={`${filledAreaInner} ${emptyAreaInner}`}
             />

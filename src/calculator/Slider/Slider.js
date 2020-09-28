@@ -3,6 +3,8 @@ import React from "react";
 import Slider from "@material-ui/core/Slider";
 import { withStyles, makeStyles } from "@material-ui/core/styles";
 
+import { SliderColor } from "../Config";
+
 const useStyles = makeStyles((theme) => ({
   root: {
     marginTop: 20,
@@ -21,14 +23,14 @@ const PrettoSlider = withStyles({
   thumb: {
     height: 40,
     width: 40,
-    backgroundColor: "currentColor",
-    border: "2px solid currentColor",
+    backgroundColor: SliderColor,
+    border: `"2px solid ${SliderColor}"`,
     top: 0,
     left: 0,
   },
-  active: {},
 
   track: {
+    backgroundColor: SliderColor,
     height: 8,
     borderRadius: 4,
   },
