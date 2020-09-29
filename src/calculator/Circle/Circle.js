@@ -93,7 +93,7 @@ const Circle = (props) => {
           </g>
           <g className={classes.Label}>
             <text x="50%" y="50%" className={classes.Percentage}>
-              {String(props.price).replace(/(.)(?=(\d{3})+$)/g, "$1,")}
+              ${String(props.price).replace(/(.)(?=(\d{3})+$)/g, "$1,")}
             </text>
             <text x="50%" y="50%" className={classes.Ctext}>
               Monthly Cost
