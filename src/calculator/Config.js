@@ -1,7 +1,7 @@
 export const Colors = {
-  CommonCircle: "#1e3376",
-  MortgageCircle: "#7170ac",
-  TaxesCircle: "#cfcfe3",
+  CommonCircle: "#171717",
+  MortgageCircle: "#f0ab2c",
+  TaxesCircle: "#7a7a7a",
 };
 
 export const LabelsValue = {
@@ -10,7 +10,7 @@ export const LabelsValue = {
   Taxes: 2122,
 };
 
-export const SliderColor = "#1e3376";
+export const SliderColor = "#f0ab2c";
 
 export const SliderValues = {
   InterestRate: {
